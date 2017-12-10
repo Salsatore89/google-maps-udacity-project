@@ -74,7 +74,6 @@ var ViewModel = function() {
     function filterMarkers(search) {
         if (arguments.length == 0) {
             for (var i = 0; i < markers.length; i++) {
-                markers[i].icon = 'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png';
                 markers[i].setVisible(true);
             }
         } else {
@@ -82,7 +81,6 @@ var ViewModel = function() {
                 if (markers[i].title.toLowerCase().indexOf(search) < 0) {
                     markers[i].setVisible(false);
                 } else {
-                    markers[i].icon = 'http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png';
                     markers[i].setVisible(true);
                 }
             }
@@ -148,12 +146,10 @@ function initMap() {
 function populateInfoWindow(marker, infowindow) {
    // Before populating the infowindow I toggle al markers to red
     for(var i=0; i<markers.length; i++) {
-      markers[i].icon = 'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png';
-      markers[i].setVisible(true);
+      markers[i].setIcon('http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png');
     }
     // Only the clicked one turns blue
-    marker.icon = 'http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png';
-    marker.setVisible(true);
+    marker.setIcon('http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png');
     // Check to make sure the infowindow is not opened for this marker.
     if (infowindow.marker != marker) {
         var wikiUrl = 'http://es.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&format=json&callback=wikiCallback';
@@ -169,10 +165,12 @@ function populateInfoWindow(marker, infowindow) {
                 infowindow.setContent('<div>' + '<strong>' + marker.title + '</strong>' + '<p>' + contentWiki + ' <a href="' + urlWiki + '">' + ' ' + 'Know more' + '</a>' + '</p>' + '</div>');
                 infowindow.open(map, marker);
             } else {
+                infowindow.marker = marker;
                 infowindow.setContent('<div>' + '<strong>' + marker.title + '</strong>' + '<p>' + 'Wikipedia article couldn\'t be loaded, click the link instead' + '</p>' + ' <a href="' + urlWiki + '">' + ' ' + 'Know more' + '</a>' + '</div>');
                 infowindow.open(map, marker);
             }
         }).fail(function() {
+            infowindow.marker = marker;
             infowindow.setContent('<div>' + '<strong>' + marker.title + '</strong>' + '<p>' + 'There was an error getting information from Wikipedia, try again later' + '</p>' + '</div>');
             infowindow.open(map, marker);
         });
