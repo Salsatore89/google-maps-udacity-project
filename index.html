@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="title"><h3>Places of interest in Madrid </h3></span>
+    </div>
+    <div class="container-fluid">
+      <div class="col-sm-12 navmenu navmenu-default navmenu-fixed-left offcanvas">
+        <div>
+          <div class="form-group">
+            <label for="filter"><h4>Filter the list:</h4></label>
+            <input class="form-control" placeholder="Type 'Museo' or 'Teatro'" type="search" name="filter" data-bind="textInput: query" autocomplete="on" />
+          </div>
+          <ul class="list-group" data-bind="foreach: filteredLocations">
+            <li class="list-group-item" data-bind="text: title, click: $parent.setLocation"></li>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="map" class="col-12"></div>
+    </div>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <scriptsrc="https://cdn.rawgit.com/twbs/bootstrap/master/js/transition.js"></script>
+    <script src="js/lib/offcanvas.js"></script>
+    <script src="js/app.js"></script>
+    <script async defer onerror="errorMap()"
+        src=
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ87zwduA9EwdeJOEU7MBqpRV6m1yo9rc&v=3&callback=initMap">
+    </script>
+  </body>
+</html>

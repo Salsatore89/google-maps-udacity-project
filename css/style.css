@@ -1,0 +1,45 @@
+.title h3
+{
+	margin-top:.5em;
+}
+
+#map
+{
+	bottom:0;
+	height:100vh;
+}
+
+body,.navmenu
+{
+	background-color:#343a40;
+}
+
+.navbar-default .navbar-toggle
+{
+	border-color:#fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar
+{
+	background-color:#fff;
+}
+
+.navbar-toggle
+{
+	background-color:#337ab7;
+}
+
+.navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover
+{
+	background-color:#23659e!important;
+}
+
+.container-fluid
+{
+	padding:0;
+}
+
+h1,label
+{
+	color:#fff;
+}
