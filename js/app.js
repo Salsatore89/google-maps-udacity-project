@@ -146,6 +146,14 @@ function initMap() {
 // one infowindow which will open at the marker that is clicked, and populate based
 // on that markers position.
 function populateInfoWindow(marker, infowindow) {
+   // Before populating the infowindow I toggle al markers to red
+    for(var i=0; i<markers.length; i++) {
+      markers[i].icon = 'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png';
+      markers[i].setVisible(true);
+    }
+    // Only the clicked one turns blue
+    marker.icon = 'http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png';
+    marker.setVisible(true);
     // Check to make sure the infowindow is not opened for this marker.
     if (infowindow.marker != marker) {
         var wikiUrl = 'http://es.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&format=json&callback=wikiCallback';
