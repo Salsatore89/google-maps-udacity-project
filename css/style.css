@@ -9,6 +9,11 @@
 	height:100vh;
 }
 
+#map h2
+{
+	color: #fff;
+}
+
 body,.navmenu
 {
 	background-color:#343a40;
